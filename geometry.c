@@ -22,7 +22,7 @@ for (int i = 0; string[i] != '('; i++)
 name[i] = string[i];
 }
 int i = 0;
-if ((strcmp(name, "circle") != 0) || (strcmp(name, "triangle") != 0))
+if ((strcmp(name, "circle") != 0) && (strcmp(name, "triangle") != 0))
 {
 printf("Incorrect shape name\n");
 }
