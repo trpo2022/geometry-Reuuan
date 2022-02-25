@@ -1,6 +1,6 @@
-main: main.c
-	gcc -Wall -Werror -o main main.c
+main: geometry.c
+	gcc -Wall -Werror -o geo geometry.c
 clean:
-	rm main
+	rm geo
 run:
-	./main
+	./geo
