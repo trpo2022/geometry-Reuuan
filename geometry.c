@@ -1,8 +1,60 @@
+#include <math.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #define m 1000
+bool lbracket_check(char* str)
+{
+    int b = 0;
+    for (int i = 0; i < m; i++) {
+        if (str[i] == '(') {
+            b = 1;
 
+            break;
+        }
+    }
+    if (b == 0) {
+        printf("Incorrect data. Expecdet '('\n");
+        return false;
+    } else {
+        return true;
+    }
+}
+bool rbracket_check(char* str)
+{
+    int b = 0;
+    for (int i = 0; i < m; i++) {
+        if (str[i] == ')') {
+            b = 1;
+
+            break;
+        }
+    }
+    if (b == 0) {
+        printf("Incorrect data. Expecdet ')'\n");
+        return false;
+    } else {
+        return true;
+    }
+}
+bool comma_check(char* str){
+    int b = 0;
+    for (int i = 0; i < m; i++) {
+        if (str[i] == ',') {
+            b = 1;
+
+            break;
+        }
+    }
+    if (b == 0) {
+        printf("Incorrect data. Expecdet ','\n");
+        return false;
+    } else {
+        return true;
+    }
+
+}
 int main()
 {
     char string[m];
@@ -10,27 +62,7 @@ int main()
     printf("Enter the name of the shape and parameters\n");
 
     fgets(string, m, stdin);
-    for (int i = 0; i < m; i++) {
-        if (string[i] == '(') {
-            b = 1;
-            br1 = i;
-            break;
-        }
-    }
-    if (b == 0) {
-        printf("Incorrect data. Expecdet '('\n");
-    }
-    b = 0;
-    for (int i = 0; i < m; i++) {
-        if (string[i] == ')') {
-            b = 1;
-            br2 = i;
-            break;
-        }
-    }
-    if (b == 0) {
-        printf("Incorrect data. Expecdet ')'\n");
-    }
+
     if (br1 > br2) {
         printf("Incorrect data\n");
     }
