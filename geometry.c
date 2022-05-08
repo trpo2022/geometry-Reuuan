@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include<ctype.h>
 #define m 1000
 bool lbracket_check(char* str)
 {
@@ -55,39 +56,58 @@ bool comma_check(char* str){
     }
 
 }
-int main()
+bool name_check(char* string)
 {
-    char string[m];
-    int b = 0, n = 0, br1, br2;
-    printf("Enter the name of the shape and parameters\n");
-
-    fgets(string, m, stdin);
-
-    if (br1 > br2) {
-        printf("Incorrect data\n");
+   char name[8];
+   int i;
+    for ( i = 0; string[i] != '('; i++) {
+        name[i] = string[i];
     }
-    b = 0;
-    for (int i = 0; i < m; i++) {
-        if (string[i] == ',') {
-            b = 1;
+    i++;
+    name[i] = '\0';
 
+
+    if (strcmp(name, "circle") != 0) {
+        printf("Incorrect shape name\n");
+        return false;
+    } 
+    else
+    {
+        return true;
+    }
+}
+void char_to_double(char* UKAZAT, double* x1)
+{
+    char* point;
+    double c;
+    int i = 0;
+    while (isdigit(*UKAZAT) == 0) {
+        UKAZAT++;
+        if (isdigit(*UKAZAT) != 0) {
+            c = strtod(UKAZAT, &point);
+            x1[i] = c;
+            i++;
+            UKAZAT = point;
+            if (i == 3)
+                break;
+        } else {
             break;
         }
     }
-    if (b == 0) {
-        printf("Incorrect data. Expected ','");
-    }
-    for (int i = 0; string[i] != '('; i++) {
-        n++;
-    }
+}
+int main()
+{
+    char string[m];
+    double D[4];
+    printf("Enter the name of the shape and parameters\n");
 
-    char name[n];
-    for (int i = 0; string[i] != '('; i++) {
-        name[i] = string[i];
-    }
+    fgets(string, m, stdin);
+    char_to_double(string, D);
 
-    if ((strcmp(name, "circle") != 0) && (strcmp(name, "triangle") != 0)) {
-        printf("Incorrect shape name\n");
+    if(comma_check(string) && rbracket_check(string) && lbracket_check(string))
+    {
+        printf("Data is correct\n");
+        
     }
 
     return 0;
